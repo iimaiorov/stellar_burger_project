@@ -1,4 +1,3 @@
-import requests
 import logging
 import json
 import allure
@@ -10,6 +9,7 @@ class CustomRequester:
     """
     Кастомный реквестер для стандартизации и упрощения отправки HTTP-запросов.
     """
+    BASE_URL = "https://stellarburgers.nomoreparties.site/api/"
     base_headers = {
         "Content-Type": "application/json",
         "Accept": "application/json"
@@ -19,10 +19,10 @@ class CustomRequester:
         """
         Инициализация кастомного реквестера.
         :param session: Объект requests.Session.
-        :param base_url: Базовый URL API.
+        :param self.base_url: Базовый URL API.
         """
         self.session = session
-        self.base_url = "https://stellarburgers.nomoreparties.site/api/"
+        self.base_url = self.BASE_URL
         self.headers = self.base_headers.copy()
         self.logger = logging.getLogger(__name__)
         self.logger.setLevel(logging.INFO)
@@ -84,7 +84,7 @@ class CustomRequester:
                 f"{headers} \\\n"
                 f"{body}"
             )
-            allure.attach(to_curl(request),name='curl', attachment_type=allure.attachment_type.TEXT, extension='txt')
+            allure.attach(to_curl(request), name='curl', attachment_type=allure.attachment_type.TEXT, extension='txt')
 
             # Обрабатываем ответ
             response_status = response.status_code
@@ -97,9 +97,11 @@ class CustomRequester:
                 allure.attach(response_data, name='response', attachment_type=allure.attachment_type.JSON)
             except json.JSONDecodeError:
                 if response_data:
-                    allure.attach(response_data, name='response', attachment_type=allure.attachment_type.TEXT, extension='txt')
+                    allure.attach(response_data, name='response', attachment_type=allure.attachment_type.TEXT,
+                                  extension='txt')
                 else:
-                    allure.attach('No response data', name='response', attachment_type=allure.attachment_type.TEXT, extension='txt')
+                    allure.attach('No response data', name='response', attachment_type=allure.attachment_type.TEXT,
+                                  extension='txt')
 
             # Логируем ответ
             self.logger.info(f"\n{'=' * 40} RESPONSE {'=' * 40}")

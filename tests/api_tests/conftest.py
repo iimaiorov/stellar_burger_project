@@ -2,7 +2,6 @@ import pytest
 import requests
 from stellar_burger_project.API.api_manager import ApiManager
 from stellar_burger_project.data.user import User
-from stellar_burger_project.utils import custom_requester
 
 
 @pytest.fixture(scope='class', autouse=True)

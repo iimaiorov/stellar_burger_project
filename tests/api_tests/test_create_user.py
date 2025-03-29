@@ -1,9 +1,9 @@
-import requests
+import allure
 
 from stellar_burger_project.data.user import User
 
+@allure.title("Create user")
 class TestCreateUser:
-
     def test_check_user_created(self, api_manager):
         user = User.get_random_user_data().to_json()
         response = api_manager.user_api.register_user(user)
@@ -19,6 +19,3 @@ class TestCreateUser:
         response_data = response.json()
 
         assert response_data['message'] == 'User already exists'
-
-
-

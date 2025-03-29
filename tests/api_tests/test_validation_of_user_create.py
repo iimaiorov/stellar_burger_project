@@ -1,7 +1,8 @@
+import allure
 import pytest
 from stellar_burger_project.data.user import User
 
-
+@allure.title("Validation of user create")
 class TestValidationOfUserCreate:
     @pytest.mark.parametrize("user, expected_status, expected_error_message", [
         (User.get_without_email(), 403, "Email, password and name are required fields"),

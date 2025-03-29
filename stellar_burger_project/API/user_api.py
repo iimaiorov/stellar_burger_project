@@ -30,7 +30,6 @@ class UserAPI(CustomRequester):
     def delete_user(self, expected_status=202):
         """
         Удаление пользователя
-        :param token:
         :param expected_status:
         """
         return self.send_request(
@@ -58,7 +57,6 @@ class UserAPI(CustomRequester):
         """
         Изменение данных пользователя
         :param user_data:
-        :param token:
         :param expected_status:
         """
         return self.send_request(
