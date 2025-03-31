@@ -29,3 +29,8 @@ def create_and_register_user(api_manager):
     api_manager.user_api.authenticate((user.email, user.password))
     yield user
     api_manager.user_api.delete_user()
+
+@pytest.fixture(scope='class')
+def ingredients(api_manager):
+    ingredients = api_manager.ingredients_api.get_ingredients().json()
+    return ingredients
