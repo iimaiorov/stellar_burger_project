@@ -22,7 +22,7 @@ class MainPage:
 
     @allure.step("Открываем главную страницу")
     def open(self):
-        self.page.goto("https://burger.stellarcoding.ru/")
+        self.page.goto('/')
 
     @allure.step("Кликаем на кнопку 'Войти в аккаунт'")
     def click_login_button(self):

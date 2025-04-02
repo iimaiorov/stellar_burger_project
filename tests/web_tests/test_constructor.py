@@ -1,5 +1,4 @@
 import allure
-import pytest
 from stellar_burger_project.pages.main_page import MainPage
 
 @allure.feature("Конструктор бургера")
@@ -12,6 +11,7 @@ class TestConstructorScroll:
         main_page.open()
         main_page.click_filling_button()  # переключаемся сначала на другой блок
         main_page.click_bun_button()
+
         assert main_page.is_bun_block_visible(), "Блок 'Булки' не отображается"
 
     @allure.title("Проверка отображения блока 'Соусы'")
@@ -20,6 +20,7 @@ class TestConstructorScroll:
         main_page = MainPage(page)
         main_page.open()
         main_page.click_sauce_button()
+
         assert main_page.is_sauce_block_visible(), "Блок 'Соусы' не отображается"
 
     @allure.title("Проверка отображения блока 'Начинки'")
@@ -28,4 +29,5 @@ class TestConstructorScroll:
         main_page = MainPage(page)
         main_page.open()
         main_page.click_filling_button()
+
         assert main_page.is_filling_block_visible(), "Блок 'Начинки' не отображается"

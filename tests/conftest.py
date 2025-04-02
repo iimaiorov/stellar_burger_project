@@ -21,10 +21,14 @@ def api_manager(session):
     """
     return ApiManager(session)
 
+@pytest.fixture(scope='class')
+def create_user():
+    user = User.get_random_user_data()
+    return user
 
 @pytest.fixture(scope='class')
-def create_and_register_user(api_manager):
-    user = User.get_random_user_data()
+def create_and_register_user(api_manager,create_user):
+    user = create_user
     api_manager.user_api.register_user(user.to_json())
     api_manager.user_api.authenticate((user.email, user.password))
     yield user

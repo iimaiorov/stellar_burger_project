@@ -177,4 +177,6 @@ pyrightconfig.json
 #Build
 allure-results/
 
+videos/
+
 # End of https://www.toptal.com/developers/gitignore/api/python
