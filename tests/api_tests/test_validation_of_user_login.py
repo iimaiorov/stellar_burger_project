@@ -9,8 +9,7 @@ class TestValidationOfUserLogin:
         (UserCredentials.get_user_authorization_with_email_only, 401, "email or password are incorrect", False),
         (UserCredentials.get_user_authorization_with_password_only, 401, "email or password are incorrect", False),
         (UserCredentials.get_user_authorization_with_only_valid_email, 401, "email or password are incorrect", False),
-        (
-        UserCredentials.get_user_authorization_with_only_valid_password, 401, "email or password are incorrect", False),
+        (UserCredentials.get_user_authorization_with_only_valid_password, 401, "email or password are incorrect",False),
         (UserCredentials.get_user_authorization_with_empty, 401, "email or password are incorrect", False)
     ], ids=[
         "Email Only",

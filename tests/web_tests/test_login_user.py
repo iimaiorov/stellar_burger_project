@@ -1,5 +1,4 @@
 import allure
-import pytest
 
 from stellar_burger_project.pages.main_page import MainPage
 from stellar_burger_project.pages.login_page import LoginPage

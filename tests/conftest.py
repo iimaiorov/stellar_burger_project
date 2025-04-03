@@ -29,10 +29,10 @@ def create_user():
 @pytest.fixture(scope='class')
 def create_and_register_user(api_manager,create_user):
     user = create_user
-    api_manager.user_api.register_user(user.to_json())
+    api_manager.user_api.register_user(user.to_json(), need_logging=False)
     api_manager.user_api.authenticate((user.email, user.password))
     yield user
-    api_manager.user_api.delete_user()
+    api_manager.user_api.delete_user(need_logging=False)
 
 @pytest.fixture(scope='class')
 def ingredients(api_manager):
