@@ -3,8 +3,10 @@ import pytest
 
 from stellar_burger_project.data.user import User
 
-@allure.title("Change user data")
+@allure.feature("Change user data")
 class TestChangeUserData:
+    @allure.title("Change user data")
+    @pytest.mark.api
     @pytest.mark.parametrize("user, expected_status, is_success_change", [
         (User.get_random_user_data(), 200, True),
         (User.get_without_email(), 200, True),

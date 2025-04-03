@@ -1,5 +1,3 @@
-import os
-
 import allure
 from allure_commons.types import AttachmentType
 
@@ -30,4 +28,3 @@ def add_video(page):
     video_path = page.video.path()
     with open(video_path, "rb") as f:
         allure.attach(f.read(), name="Test Video", attachment_type=AttachmentType.MP4)
-

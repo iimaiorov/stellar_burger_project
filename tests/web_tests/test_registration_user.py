@@ -1,5 +1,6 @@
 import allure
 import faker
+import pytest
 
 from stellar_burger_project.pages.main_page import MainPage
 from stellar_burger_project.pages.login_page import LoginPage
@@ -8,6 +9,8 @@ from stellar_burger_project.pages.registration_page import RegistrationPage
 
 @allure.feature("Регистрация пользователя")
 class TestRegistrationUser:
+
+    @pytest.mark.web
     @allure.title("Регистрация нового пользователя")
     @allure.description("Регистрация нового пользователя с корректными данными")
     def test_check_user_can_be_registered(self, page, create_user):
@@ -29,6 +32,7 @@ class TestRegistrationUser:
 
             assert main_page.is_arrange_order_button_visible
 
+    @pytest.mark.web
     @allure.title("Регистрация пользователя с коротким паролем")
     @allure.description("Регистрация пользователя с паролем, содержащим менее 6 символов")
     def test_check_user_can_not_be_registered_with_short_password(self, page, create_user):

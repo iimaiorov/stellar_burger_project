@@ -1,9 +1,12 @@
 import allure
+import pytest
 
 from stellar_burger_project.data.user import User
 
-@allure.title("Create user")
+@allure.feature("Create user")
 class TestCreateUser:
+    @allure.title("Create user")
+    @pytest.mark.api
     def test_check_user_created(self, api_manager):
         user = User.get_random_user_data().to_json()
         response = api_manager.user_api.register_user(user)
@@ -11,7 +14,8 @@ class TestCreateUser:
 
         assert response_data is not None
         assert response_data['user']['email'] == user['email']
-
+    @allure.title("Create user with existing email")
+    @pytest.mark.api
     def test_duplicate_user_can_not_be_created(self, api_manager):
         user = User.get_random_user_data().to_json()
         api_manager.user_api.register_user(user)

@@ -3,8 +3,10 @@ import pytest
 from stellar_burger_project.data.user_credentials import UserCredentials
 
 
-@allure.title("Validation of user login")
+@allure.feature("Validation of user login")
 class TestValidationOfUserLogin:
+    @allure.title("Validation of user login")
+    @pytest.mark.api
     @pytest.mark.parametrize("user_credentials_func, expected_status, expected_error_message, is_success_login", [
         (UserCredentials.get_user_authorization_with_email_only, 401, "email or password are incorrect", False),
         (UserCredentials.get_user_authorization_with_password_only, 401, "email or password are incorrect", False),
