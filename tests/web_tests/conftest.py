@@ -7,7 +7,7 @@ from project import Config
 @pytest.fixture(autouse=True)
 def page():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False,slow_mo=50)
+        browser = p.chromium.launch()
         context = browser.new_context(
             record_video_dir="videos/",
             base_url= Config().base_url,
