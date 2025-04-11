@@ -16,18 +16,17 @@
     cd stellar_burger_project
     ```
 
-3. Создайте и активируйте виртуальное окружение:
+3. Убедитесь, что Poetry установлен. Если нет, установите его:
     ```sh
-    python -m venv venv
-    source venv/bin/activate  # для Windows используйте `venv\Scripts\activate`
+    pip install poetry
     ```
 
 4. Установите зависимости:
     ```sh
-    pip install -r requirements.txt
+    poetry install
     ```
 
 ## Использование
 Для запуска тестов используйте следующую команду:
 ```sh
-pytest
+poetry run pytest
